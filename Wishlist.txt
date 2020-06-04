@@ -1,5 +1,5 @@
 Include bootstrap?
-Number of questions?
+Number of questions? w3schools quiz
 Audio cues on correct, incorrect, time
 sticky header?
 Light and dark mode?
@@ -7,3 +7,10 @@ multiple choice as radio buttons or toggle buttons?
 Display total timer for the quiz
 Countdown timer after clicking start to view the first question
 Who wants to be a millionare music?
+progress bar
+Display whether you were correct or not after the question or at the end?
+Review your missed questions
+Arrows to skip a question?
+fontawesome?
+reset css or normalize css?
+multiple webpages or single webpage?
