@@ -1,0 +1,9 @@
+Include bootstrap?
+Number of questions?
+Audio cues on correct, incorrect, time
+sticky header?
+Light and dark mode?
+multiple choice as radio buttons or toggle buttons?
+Display total timer for the quiz
+Countdown timer after clicking start to view the first question
+Who wants to be a millionare music?
