@@ -23,6 +23,7 @@ function startQuiz() {
 }
 
 function nextQuestion() {
+    resetCard();
     questionsShow(questions[questionsIndex]);
 }
 
@@ -40,6 +41,13 @@ function questionsShow(question){
     })
 }
 
+function resetCard(){
+    while(answersEl.firstChild){
+        answersEl.removeChild;
+        (answersEl.firstChild)
+    }
+}
+
 function selectAnswer(e) {
     var btnClicked = e.target;
     var btnCorrect = btnClicked.dataset.correct;
@@ -47,6 +55,11 @@ function selectAnswer(e) {
     Array.from(answersEl.children).forEach(button => {
         setStatusClass(button, button.dataset.correct);
     })
+
+    setTimeout(function(){
+        questionsIndex++;
+        nextQuestion()
+    }, 2000);
 }
 
 function setStatusClass(element, correct){
