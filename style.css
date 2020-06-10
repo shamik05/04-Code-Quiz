@@ -157,8 +157,9 @@ button[disabled] {
       text-align: center;
   }
 
- #btnStart, #btnHigh {
+ #btnStart, #btnStop, #btnHigh {
      font-weight: bold;
+     text-align: right;
  }
 
  .hide {
