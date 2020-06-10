@@ -1,7 +1,11 @@
 var startButton = document.querySelector("#btnStart");
 var stopButton = document.querySelector("#btnStop");
 var highButton = document.querySelector("#btnHigh");
-var questionsShuffle, questionsCurrent;
+var questionEl = document.querySelector("#question");
+var answersEl = document.querySelector("#quizAnswers")
+var questionsIndex;
+var score;
+
 startButton.addEventListener("click", startQuiz);
 
 function startQuiz() {
@@ -10,16 +14,54 @@ function startQuiz() {
     highButton.classList.add("hide");
     stopButton.classList.remove("hide");
     stopButton.setAttribute("style", "margin-left: 40%;")
-    document.querySelector(".card-header").classList.remove("hide");
+    // document.querySelector(".card-header").classList.remove("hide");
     document.querySelector(".card-body").classList.remove("hide");
     document.querySelector(".card-footer").classList.remove("hide");
-    nextQuestion()
+    questionsIndex = 0;
+    // questions[questionsIndex].answers.forEach(element => console.log(element.text))
+    nextQuestion();
 }
 
 function nextQuestion() {
-    
+    questionsShow(questions[questionsIndex]);
 }
 
+function questionsShow(question){
+    questionEl.value = questions[questionsIndex].question;
+    questions[questionsIndex].answers.forEach(element => {
+        var button = document.createElement("button")
+        button.innerText = element.text;
+        button.classList.add("btn");
+        if(element.correct) {
+            button.dataset.correct = element.correct;
+        }
+        button.addEventListener("click", selectAnswer);
+        answersEl.appendChild(button);
+    })
+}
+
+function selectAnswer(e) {
+    var btnClicked = e.target;
+    var btnCorrect = btnClicked.dataset.correct;
+    setStatusClass(document.body, btnCorrect);
+    Array.from(answersEl.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct);
+    })
+}
+
+function setStatusClass(element, correct){
+    clearStatusClass(element);
+    if(correct){
+        element.classList.add("correct");
+    }else{
+        element.classList.add("incorrect");
+    }
+}
+
+function clearStatusClass(element) {
+    element.classList.remove("correct");
+    element.classList.remove("incorrect");
+}
 
 var questions = [
     {
