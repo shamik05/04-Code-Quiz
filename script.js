@@ -43,8 +43,7 @@ function questionsShow(question){
 
 function resetCard(){
     while(answersEl.firstChild){
-        answersEl.removeChild;
-        (answersEl.firstChild)
+        answersEl.removeChild(answersEl.firstChild);
     }
 }
 
@@ -55,11 +54,20 @@ function selectAnswer(e) {
     Array.from(answersEl.children).forEach(button => {
         setStatusClass(button, button.dataset.correct);
     })
-
-    setTimeout(function(){
-        questionsIndex++;
-        nextQuestion()
-    }, 2000);
+    if(questions.length > questionsIndex+1){
+       setTimeout(function(){
+            questionsIndex++;
+            nextQuestion()
+        }, 2000);
+    }else{
+        resetCard();
+        document.querySelector(".card-body").classList.add("hide");
+        document.querySelector(".card-footer").classList.add("hide");
+        stopButton.classList.add("hide");
+        startButton.setAttribute("style", "display: block");
+        startButton.classList.remove("hide");
+        highButton.classList.remove("hide");
+    }
 }
 
 function setStatusClass(element, correct){
